@@ -1,18 +1,19 @@
 ---
 layout: archive
 ---
-<ul class="posts-list">
 
-  {% assign category = page.category | default: page.title %}
-  {% for post in site.categories[category] %}
-    <li>
-      <h3>
-        <a href="{{ site.baseurl }}{{ post.url }}">
-          {{ post.title }}
-        </a>
-        <small>{{ post.date | date_to_string }}</small>
-      </h3>
-    </li>
-  {% endfor %}
+{% assign category = page.category | default: page.title %}
 
-</ul>
+<h3 class="archive__subtitle">{{ category }}</h3>
+
+{% if paginator %}
+  {% assign posts = paginator.posts %}
+{% else %}
+  {% assign posts = site.posts %}
+{% endif %}
+
+{% for post in site.categories[category] %}
+    {% include archive-single.html %}
+{% endfor %}
+
+{% include paginator.html %}

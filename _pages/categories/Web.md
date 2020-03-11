@@ -1,6 +1,7 @@
 ---
 layout: category
-title: Web
+title: 웹
+category: Web
 permalink: /categories/web/
 author_profile: true
 sidebar:
