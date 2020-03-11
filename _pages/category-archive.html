@@ -1,8 +1,10 @@
 ---
-layout: category
+layout: categories
 permalink: /categories/
 title: "카테고리"
 author_profile: true
+sidebar:
+    nav: "categories"
 ---
 {% include group-by-array collection=site.posts field="categories" %}
 {% for category in group_names %}

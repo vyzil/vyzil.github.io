@@ -17,3 +17,21 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+categories:
+    - title: 코딩
+      children:
+            - title: "Algorithm"
+              url: /categories/algorithm/
+
+    - title: 해킹
+      children:
+            - title: "System Hacking"
+              url: /categories/system_hacking
+            - title: "Reversing"
+              url: /categories/reversing/
+
+    - title: 기타
+      children:
+            - title: "Web"
+              url: /categories/web/
