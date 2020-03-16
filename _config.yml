@@ -290,6 +290,8 @@ defaults:
       sidebar:
         nav: "categories"
       layout: single
+      toc: true
+      toc_sticky: true
       author_profile: true
       read_time: true
       comments: # true
