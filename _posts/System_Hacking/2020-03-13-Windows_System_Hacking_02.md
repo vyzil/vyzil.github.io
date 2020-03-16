@@ -20,6 +20,8 @@ Visual Studio로 보안 옵션을 해제한 후 컴파일하여 취약 프로그
 
 [참조링크](https://5kyc1ad.tistory.com/314)
 
+---
+
 ### # ShellCode
 이전 실습때 cmd를 띄우는 쉘코드를 약간 수정하여 계산기를 띄우도록 하는 쉘코드를 작성하였다. 이번 실습땐 `strcpy`와 `fgets`를 사용하기 때문에 특정 제어문자들을 제외할 필요가 있어서 Encoder를 통해 그러한 제어문자들을 제거시켜 주었다.
 ```python
@@ -112,6 +114,8 @@ b"\x08\xa2\xd8\xcb\x08\xa2\xd9\xc4\x47\xa2\xc6\x94\x0e\xa7\x86\x2a"
 b"\x8b\xeb\x86\x58\x9b\xc7\xe5\x67\x9e\x18\x83\x83"
 ```
 
+---
+
 ### # Direct EIP Overwrite
 
 Retern 주소를 쉘코드 주소로 설정하면 된다.
@@ -188,6 +192,7 @@ print("[+] Done !!")
 
 `DUMMY` 변수를 보면 책과 달리 `b"\xCC"*4`를 넣어준 것을 볼 수 있다. 처음에는 책과 비슷하게 코드를 작성하였으나, Stack관련 버그 메시지가 떴다. Ollydbg로 분석한 결과, 함수가 종료될 때 버퍼의 끝을 0xCCCCCCCC 와 비교하여 다르면 버그 메시지를 띄우는 함수가 있었다. (위에서 언급된 보안 옵션은 모두 해제한 상태였다.) 따라서 이를 우회하기 위해 위와 같이 처리해 주었다.
 
+---
 
 ### # Trampoline Technique
 
@@ -265,6 +270,8 @@ print("[+] Done !!")
 ```
 
 마찬가지로 `xCCCCCCCC`를 버퍼의 끝에 삽입해 주었다.
+
+---
 
 ### # SEH Overwrite
 
@@ -347,3 +354,5 @@ f.close()
 
 - ASLR이 적용되었는데 고정주소의 명령어를 어떻게 찾나?
 > ASLR이 text section은 randomize하지 않음.
+
+---
