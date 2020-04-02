@@ -27,9 +27,11 @@ categories:
     - title: 해킹
       children:
             - title: "System Hacking"
-              url: /categories/system_hacking
+              url: /categories/system_hacking/
             - title: "Reversing"
               url: /categories/reversing/
+            - title: "Web Hacking"
+              url: /categories/web_hacking/
 
     - title: 기타
       children:
