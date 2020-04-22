@@ -73,7 +73,7 @@ Object  ->  Vtable  ->  vfunc1
             member2     vfunc3
 ```
 
-### 1. Vulnerable Code
+#### 1. Vulnerable Code
 ```cpp
 #include "stdafx.h"
 #include <string>
@@ -128,7 +128,7 @@ int main(int argc, char* argv[]) {
 
 원래 코드에서는 `"windows_hacking"`을 객체 생성할 때 바로 넣어 주었는데, 에러가 발생하여 name변수를 추가해 넣어주었다. 보안 옵션으로는 DEP를 해제해 주었다.
 
-### 2. Exploit Code
+#### 2. Exploit Code
 
 ```python
 import struct
