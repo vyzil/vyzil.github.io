@@ -21,8 +21,8 @@ main:
 categories:
     - title: 연구
       children:
-            - title: "Algorithm"
-              url: /categories/algorithm/
+            - title: "Research"
+              url: /categories/research/
 
     - title: 코딩
       children:

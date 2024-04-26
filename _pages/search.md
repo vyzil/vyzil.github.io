@@ -1,5 +1,8 @@
 ---
 title: Search
-layout: search
 permalink: /search/
+layout: search
+author_profile: true
+sidebar:
+    nav: "categories"
 ---
