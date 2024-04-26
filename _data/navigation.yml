@@ -21,8 +21,8 @@ main:
 categories:
     - title: 연구
       children:
-            - title: "Research"
-              url: /categories/research/
+            - title: "Hardware"
+              url: /categories/hardware/
 
     - title: 코딩
       children:
