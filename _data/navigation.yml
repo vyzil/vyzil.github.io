@@ -19,6 +19,11 @@ main:
   #   url: /sitemap/
 
 categories:
+    - title: 연구
+      children:
+            - title: "Algorithm"
+              url: /categories/algorithm/
+
     - title: 코딩
       children:
             - title: "Algorithm"
