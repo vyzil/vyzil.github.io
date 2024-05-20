@@ -1,6 +1,14 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+// ****************************
+h1,
+h2,
+h3 {
+  color: #87CEEB; /* SkyBlue */
+}
+// ****************************
+
 
 @charset "utf-8";
 
@@ -14,15 +22,3 @@
     font-style: normal;
 }
 
-// GPT가 알려준 색상 바꾸는 방법..
-h1,
-h2,
-h3 {
-  color: #87CEEB !important; /* SkyBlue */
-}
-
-h4,
-h5,
-h6 {
-  color: #000 !important; /* 기본 색상 */
-}
