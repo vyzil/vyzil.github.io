@@ -1,0 +1,56 @@
+---
+title: 240521 업데이트 로그
+date : 2024-05-21
+category:
+    - Web
+tags:
+    - Jekyll
+    - Blog
+    - Web
+---
+
+간단하게 하려고 했지만, ChatGPT에게 물어보면서 하다보니 욕심이 너무 생긴다.  
+24년도 이후 업데이트 한, 해야할 내용들을 여기에 작성한다.  
+
+## 글자색 관련
+`<span style="color: #1E90FF;"> </span>`  
+
+위 syntax로 markdown에 입력해도 되지만, 매번 하기 귀찮다.  
+강조색을 원하는 색으로 설정하고, 강조색을 자주 사용하고자 한다.  
+
+## 이미지를 고려한 디렉토리 구조 변경
+이미지 삽입을 고려하다보니 디렉토리 구조가 변경되어야 할 것 같다.  
+우선 다양한 구조를 알아봐야 하겠지만, 포스트를 directory로 관리하는게 좋을 것 같다.
+
+### 구상
+#### 디렉토리 구조
+`/YYYY-MM-DD-$post_num/index.md` 로 관리하고 링크명은 `$post_num`으로 하고 싶다.  
+이미지는 `/YYYY-MM-DD-$post_num/images/` 폴더에서 가져오게 할 것.
+
+
+#### VSCode 이미지 관련 설정
+추가로 VSCODE에서도 드래그 앤 드롭으로 이미지를 삽입할 수 있도록 설정하자  
+
+
+### 부분 해결
+일단 이 부분에 대한 개념을 이해는 했음.  
+기본적으로 `_site`에 자원을 복사해서 deloy하는데, `assets`폴더가 아니면 복사를 안함  
+따라서 이미지는 따로 모으는게 맞는 것 같음
+
+VSCode 에서 **Markdown All in one**을 설치하면, 다음과 같은 세팅이 가능하다.
+
+![](../../../assets/image/image.png)
+
+
+
+나는 그림과 같이, item을 추가 해주었는데, [링크](https://stackoverflow.com/questions/75831497/how-can-i-paste-images-into-my-markdown-files-in-vs-code)를 참조해서 한거라 이게 맞는지는 모르겠음  
+근데 일단 이렇게 하면 이미지를 붙여넣을 때, `![alt text](../../../assets/image/image.png)` 문구가 붙여지면서 `assets/image/`폴더에 png 파일이 생성됨  
+
+![](../../../assets/image/image-1.png)  
+
+이미지 번호가 알아서 numbering 되는데, 찝찝하긴 하지만 되는 것에 만족  
+더 원하는 방향이 있다면, 다음과 같이 수정하고 싶음
+- **방법 1** : 이미지명을 post와 연관짓기 -> 이는 vscode에서 설정해줘야함
+- **방법 2** :`/assets/image/post/` 폴더로 관리하기
+
+\* 참고로 어직 모든 포스트에 대해서 디렉토리 구조 조정이 필요하다
