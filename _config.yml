@@ -19,7 +19,7 @@ locale                   : "ko"
 title                    : "생각 정리"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-favicon                  : "/assets/images/favicon.ico"  # *** Added
+favicon                  : "/assets/image/favicon.ico"  # *** Added
 name                     : "VyzIL"
 description              : "!"
 url                      : "https://vyzil.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
