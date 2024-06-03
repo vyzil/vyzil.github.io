@@ -204,7 +204,37 @@ npm run start
 
 ### 기존 데이터 관련
 
-음... 되려나  
-우선은 데이터 추출은 해놨는데 `data_Guest.prsv`파일로..  
-왠지 DB가 복잡하기 때문에 여기를 긁어서 꺼내기는 쉬운데,
-다시 DB에 넣는건 암호화도 해야하기 떄문에 쉽지 않아보임...
+암호화 방식을 분석해서 DB에 어떻게든 꾸역꾸역 넣으려고 했지만,  
+코드는 어느정도 이해했는데, ts에서 형변환을 python으로 똑같이 구현하는 부분 쪽에서 막히고 포기했다.
+
+생각해보니 importData 이 부분의 버튼을 그냥 활성화 시켜주면 됐었다...
+
+```diff
+# `menu-ui-handler.ts` 124:133
+-   if (Utils.isLocal) {
+      manageDataOptions.push({
+        label: i18next.t("menuUiHandler:importSession"),
+        handler: () => {
+          confirmSlot(i18next.t("menuUiHandler:importSlotSelect"), () => true, slotId => this.scene.gameData.importData(GameDataType.SESSION, slotId));
+          return true;
+        },
+        keepOpen: true
+      });
+-   }
+
+# `menu-ui-handler.ts` 155:164
+-    if (Utils.isLocal) {
+      manageDataOptions.push({
+        label: i18next.t("menuUiHandler:importData"),
+        handler: () => {
+          this.scene.gameData.importData(GameDataType.SYSTEM);
+          return true;
+        },
+        keepOpen: true
+      });
+-    }
+
+```
+
+근데 DB를 사용하면 trainer ID 나 이런 요소들이 맞아야 하기 때문에 DB에서 이를 바꿔주면 된다.  
+혹여나 또 id랄 맞춰주려면, 분석했던 내용을 기반으로 deecode 해서 데이터 바꾸고 다시 encode 하면 될 것 같다.
