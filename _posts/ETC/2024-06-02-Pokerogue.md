@@ -151,11 +151,60 @@ Invoke-Expression "netsh interface portproxy show v4tov4";
 
 ### Session 관련
 
-PokeRogue 코드를 잠깐 보니까 local에서 dev로 할 때에는 login 기능을 꺼둠.  
-이걸 킨다고 해도 Database가 없기 때문에 login 기능을 사용할 수 없음.
+다른 기기로 로그인하면 저장된 데이터로 할 수가 없는 줄 알았는데,  
+Backend도 github에 있었다.
 
-친구들이랑 같이 하는게 아니라 나만 하고 싶다면,  
-그냥 서버에 내 데이터만 저장하고 접근하면 그 데이터만 활용하도록 해도 되지 않을까..
+[Github: rogueserver](https://github.com/pagefaultgames/rogueserver)
+여기서 하라는 대로 수행
 
-쉽지 않을 것 같다...  
--> 그냥 우선 data를 직접 옮기는 방향으로.. 
+우선 README 와는 조금 다르게 
+
+```diff
+# src/utils.tx:265
+- export const apiUrl = isLocal ? serverUrl : "https://api.pokerogue.net";
++ export const apiUrl = isLocal ? serverUrl : "http://{주소}:48001";
+```
+
+여기서 Back-end 서버가 48001 포트로 해줄 것이기 때문에 이것도 port forwarding까지 해줘야함.  
+
+
+go version 문제 떄문에 잘 안됐었음.  
+ubuntu 기본 설치버전이 1.18.x 였는데 최신 버전으로 수동설치함  
+그리고 docker 활용 안할 예정이라 mongoDB도 설정해줘야함
+
+#### DB 설정
+```bash
+# Setup DB
+sudo apt update
+sudo apt install mariadb-server
+
+sudo mysql_secure_installation
+
+sudo mysql -u root -p
+
+CREATE DATABASE pokeroguedb;
+CREATE USER 'pokerogue'@'localhost' IDENTIFIED BY 'pokerogue';
+GRANT ALL PRIVILEGES ON pokeroguedb.* TO 'pokerogue'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+#### Back-end Server 구동
+```bash
+screen -R rogueserver
+cd /PATH_TO_rogueserver/
+./rogueserver --debug --dbuser pokerogue --dbpass pokerogue &
+# [alt+D, A]
+
+screen -R pokerogue
+cd /PATH_TO_pokerogue/
+npm run start
+# [alt+D, A]
+```
+
+### 기존 데이터 관련
+
+음... 되려나  
+우선은 데이터 추출은 해놨는데 `data_Guest.prsv`파일로..  
+왠지 DB가 복잡하기 때문에 여기를 긁어서 꺼내기는 쉬운데,
+다시 DB에 넣는건 암호화도 해야하기 떄문에 쉽지 않아보임...
