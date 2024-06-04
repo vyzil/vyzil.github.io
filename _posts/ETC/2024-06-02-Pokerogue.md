@@ -6,6 +6,7 @@ tags:
     - Game
 ---
 
+## 0. 서론
 Pokerogue라는 게임을 해보기로 했다.  
 Web 기반 게임이라는데, 나무위키 페이지를 보니 github에서 코드를 clone해서 할 수도 있다고 한다.
 따라서, clone 해서 local 서버에서 구동시켜봤다.
